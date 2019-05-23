@@ -8,6 +8,11 @@ const styles = StyleSheet.create({
     display: 'flex',
     backgroundColor: TYPOGRAPHY.COLOR.Default,
   },
+  row: {
+    padding: 15,
+    marginBottom: 5,
+    backgroundColor: 'skyblue',
+  }
 });
 
 export default styles;
