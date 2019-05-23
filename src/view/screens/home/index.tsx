@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 
 import Component from './Component';
 import { market_prices_thunk } from '../../../../shared/redux/thunk/marketPrices';
+import { set_trade_symbol } from '../../../../shared/redux/actions/fetchTrades';
 
 const mapStateToProps = (state:any) => {
   return {
@@ -12,6 +13,7 @@ const mapStateToProps = (state:any) => {
 const mapDispatchToProps = (dispatch:any) => {
   return {
     fetchMarketPrices: () => dispatch(market_prices_thunk()),
+    setSelectedSymbol: (symbol:any) => dispatch(set_trade_symbol(symbol))
   }
 };
 

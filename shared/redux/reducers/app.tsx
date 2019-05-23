@@ -6,6 +6,8 @@ const initialState = {
   marketAssets: {},
   marketAssetPairs: {},
   marketPrices: {},
+  tradeSymbol: '',
+  recentTrades: {},
 };
 
 export default (state = initialState, action: any) => {
@@ -59,6 +61,25 @@ export default (state = initialState, action: any) => {
         isError: true,
         isLoading: false
       };
+    case ACTION_TYPES.SET_TRADE_SYMBOL:
+      return {
+        ...state,
+        tradeSymbol: action.symbol,
+      };
+    case ACTION_TYPES.FETCH_TRADES:
+      return {
+        ...state,
+        isLoading: true,
+        isError: false,
+      };
+    case ACTION_TYPES.RECEIVE_TRADES:
+      return {
+        ...state,
+        recentTrades: action.data,
+        isLoading: false,
+        isError: false,
+      };
+
     default:
       return state;
   }

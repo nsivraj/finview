@@ -11,6 +11,14 @@ export const showSplash = () => {
   });
 };
 
+export const showTradesGraph = () => {
+  Navigation.mergeOptions('BottomTabsId', {
+    bottomTabs: {
+      currentTabIndex: 1
+    }
+  });
+};
+
 export const tabbedNavigation = () =>
   Navigation.setRoot({
     root: {
@@ -42,6 +50,35 @@ export const tabbedNavigation = () =>
                   selectedTextColor: TYPOGRAPHY.COLOR.Secondary,
                   icon: require('../view/assets/images/tabbar/home.png'),
                   selectedIcon: require('../view/assets/images/tabbar/home.png'),
+                },
+              },
+            },
+          },
+          {
+            stack: {
+              children: [
+                {
+                  component: {
+                    name: SCREENS.TradesGraph,
+                    passProps: {
+                      text: 'This is TradesGraph',
+                    },
+                  },
+                },
+              ],
+              options: {
+                topBar: {
+                  visible: false,
+                  drawBehind: true,
+                  animate: true,
+                },
+                bottomTab: {
+                  fontSize: 12,
+                  text: 'Trades',
+                  textColor: TYPOGRAPHY.COLOR.Primary,
+                  selectedTextColor: TYPOGRAPHY.COLOR.Secondary,
+                  icon: require('../view/assets/images/tabbar/trades.png'),
+                  selectedIcon: require('../view/assets/images/tabbar/trades.png'),
                 },
               },
             },

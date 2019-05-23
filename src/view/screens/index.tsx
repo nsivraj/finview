@@ -4,6 +4,7 @@ import { SCREENS } from '../../constants/screen';
 
 import * as Splash from './splash';
 import * as Home from './home';
+import * as TradesGraph from './tradesGraph';
 import * as Settings from './settings';
 
 const registerComponentWithRedux = (redux: any) => (
@@ -21,5 +22,6 @@ const registerComponentWithRedux = (redux: any) => (
 export function registerScreens(redux: any) {
   registerComponentWithRedux(redux)(SCREENS.Splash, Splash.default);
   registerComponentWithRedux(redux)(SCREENS.Home, Home.default);
+  registerComponentWithRedux(redux)(SCREENS.TradesGraph, TradesGraph.default);
   registerComponentWithRedux(redux)(SCREENS.Settings, Settings.default);
 }

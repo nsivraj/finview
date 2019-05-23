@@ -1,7 +1,9 @@
 import * as React from 'react';
+import { Navigation } from 'react-native-navigation';
 import { View, FlatList, Text } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import styles from './styles';
+import { showTradesGraph } from '../../../navigators/navigation';
 
 const extractKey = ({id}:any) => id
 
@@ -9,6 +11,7 @@ export interface Props {
   name: string;
   fetchMarketPrices: any,
   prices: any,
+  setSelectedSymbol: any,
 }
 
 interface State {}
@@ -23,12 +26,13 @@ class Home extends React.PureComponent<Props, State> {
   }
 
   recentTradesScreen = (symbol:any):any => {
-    console.log("recent trades for symbol: " + symbol);
+    this.props.setSelectedSymbol(symbol);
+    showTradesGraph();
   }
 
-  renderRightElement = (lastTrade:any) => {
+  renderRightElement = (mostRecentTrade:any) => {
     return (
-      <Text style={{fontSize: 12}}>{lastTrade}</Text>
+      <Text style={{fontSize: 12}}>{mostRecentTrade}</Text>
     );
   }
 
@@ -41,16 +45,16 @@ class Home extends React.PureComponent<Props, State> {
         titleStyle={{fontSize: 12}}
         topDivider={true}
         chevron
-        rightElement={this.renderRightElement(item.lastTrade)}
+        rightElement={this.renderRightElement(item.mostRecentTrade)}
       />
     )
   }
 
-  lastTradeList = (prices:any) => {
+  mostRecentTradeList = (prices:any) => {
     return Object.keys(prices.result).map((pairName:any, index:number) => {
       return {
         symbol: pairName,
-        lastTrade: prices.result[pairName].c[0],
+        mostRecentTrade: prices.result[pairName].c[0],
         id: index.toString(),
       };
     });
@@ -63,7 +67,7 @@ class Home extends React.PureComponent<Props, State> {
         <View style={styles.container}>
           <FlatList
             style={styles.listContainer}
-            data={this.lastTradeList(prices)}
+            data={this.mostRecentTradeList(prices)}
             renderItem={this.renderItem}
             keyExtractor={extractKey}
           />
