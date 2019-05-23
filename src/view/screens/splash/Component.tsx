@@ -5,7 +5,10 @@ import { tabbedNavigation } from '../../../navigators/navigation';
 import styles from './styles';
 import { BUTTON_DEFAULT } from '../../elements/buttons';
 
-export interface Props {}
+export interface Props {
+  fetchMarketAssets: any,
+  fetchMarketAssetPairs: any,
+}
 
 interface State {}
 
@@ -15,7 +18,13 @@ class Splash extends React.PureComponent<Props, State> {
     this.state = {};
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    /**
+     * Kick off the redux-thunks to get data that is needed before the app launches
+     */
+    this.props.fetchMarketAssets();
+    this.props.fetchMarketAssetPairs();
+  }
 
   navigateToHome = () => {
     tabbedNavigation();

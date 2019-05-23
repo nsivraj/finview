@@ -3,15 +3,17 @@ import { View, FlatList, Text } from 'react-native';
 
 import styles from './styles';
 
-const extractKey = ({id}:any) => id.toString()
+const extractKey = ({id}:any) => id
 
 export interface Props {
   name: string;
   fetchMarketPrices: any,
-  prices: Array<any>,
+  prices: any,
 }
 
-class Home extends React.PureComponent<Props, any> {
+interface State {}
+
+class Home extends React.PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
   }
@@ -22,25 +24,43 @@ class Home extends React.PureComponent<Props, any> {
 
   renderItem = ({item}:any) => {
     return (
-      <Text style={styles.row}>
-        {item.login}
-      </Text>
+      <View style={styles.row}>
+        <View style={{flex: 1}}>
+          <Text>{item.symbol}</Text>
+        </View>
+        <View style={{flex: 1}}>
+          <Text style={{textAlign: 'right'}}>{item.lastTrade}</Text>
+        </View>
+      </View>
     )
+  }
+
+  lastTradeList = (prices:any) => {
+    return Object.keys(prices.result).map((pairName:any, index:number) => {
+      return {
+        symbol: pairName,
+        lastTrade: prices.result[pairName].c[0],
+        id: index.toString(),
+      };
+    });
   }
 
   render() {
     const { prices } = this.props;
-
-    return (
-      <View style={styles.container}>
-        <FlatList
-          style={styles.container}
-          data={prices}
-          renderItem={this.renderItem}
-          keyExtractor={extractKey}
-        />
-      </View>
-    );
+    if(prices.result) {
+      return (
+        <View style={styles.container}>
+          <FlatList
+            style={styles.listContainer}
+            data={this.lastTradeList(prices)}
+            renderItem={this.renderItem}
+            keyExtractor={extractKey}
+          />
+        </View>
+      );
+    } else {
+      return (null);
+    }
   }
 }
 

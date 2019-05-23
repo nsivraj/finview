@@ -5,7 +5,7 @@ import { market_prices_thunk } from '../../../../shared/redux/thunk/marketPrices
 
 const mapStateToProps = (state:any) => {
   return {
-    prices: state.app.marketPrices
+    prices: state.app.marketPrices,
   };
 };
 

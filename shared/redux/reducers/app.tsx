@@ -3,7 +3,9 @@ import { ACTION_TYPES } from '../constants/actionTypes';
 const initialState = {
   isLoading: false,
   isError: false,
-  marketPrices: [],
+  marketAssets: {},
+  marketAssetPairs: {},
+  marketPrices: {},
 };
 
 export default (state = initialState, action: any) => {
@@ -20,7 +22,34 @@ export default (state = initialState, action: any) => {
       };
     case ACTION_TYPES.RECEIVE_PRICES:
       return {
+        ...state,
         marketPrices: action.data,
+        isLoading: false,
+        isError: false,
+      };
+    case ACTION_TYPES.FETCH_ASSETS:
+      return {
+        ...state,
+        isLoading: true,
+        isError: false,
+      };
+    case ACTION_TYPES.RECEIVE_ASSETS:
+      return {
+        ...state,
+        marketAssets: action.data,
+        isLoading: false,
+        isError: false,
+      };
+    case ACTION_TYPES.FETCH_ASSETPAIRS:
+      return {
+        ...state,
+        isLoading: true,
+        isError: false,
+      };
+    case ACTION_TYPES.RECEIVE_ASSETPAIRS:
+      return {
+        ...state,
+        marketAssetPairs: action.data,
         isLoading: false,
         isError: false,
       };
