@@ -18,14 +18,16 @@ export interface Props {
 interface State {}
 
 class Home extends React.PureComponent<Props, State> {
+
   navigationEventListener:any = {};
+  dataPolling:any = undefined;
+
   constructor(props: Props) {
     super(props);
   }
 
   componentDidMount() {
     this.navigationEventListener = Navigation.events().bindComponent(this);
-    this.props.fetchMarketPrices();
   }
 
   componentWillUnmount() {
@@ -40,6 +42,18 @@ class Home extends React.PureComponent<Props, State> {
     if(tradeSymbol && tradeSymbol.length > 0) {
       this.props.setSelectedSymbol('');
     }
+
+    this.props.fetchMarketPrices();
+    this.dataPolling = setInterval(() => {
+      this.props.fetchMarketPrices();
+    }, 5000);
+  }
+
+  componentDidDisappear() {
+    if(this.dataPolling) {
+      clearInterval(this.dataPolling);
+    }
+    this.dataPolling = undefined;
   }
 
   recentTradesScreen = (symbol:any):any => {
