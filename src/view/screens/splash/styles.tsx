@@ -12,6 +12,12 @@ const styles = StyleSheet.create({
   image: {
     width: '70%',
   },
+  input: {
+    height: 70,
+    backgroundColor: '#ffffff',
+    paddingLeft: 15,
+    paddingRight: 15
+  }
 });
 
 export default styles;

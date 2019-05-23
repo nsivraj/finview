@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Image, SafeAreaView } from 'react-native';
+import { View, Image, SafeAreaView, TextInput, Text } from 'react-native';
 
 import { tabbedNavigation } from '../../../navigators/navigation';
 import styles from './styles';
@@ -43,8 +43,23 @@ class Splash extends React.PureComponent<Props, State> {
             resizeMode="center"
             source={require('../../assets/images/rn_ts.png')}
           />
+          {/* <Text>Username:</Text>
+          <TextInput style={styles.input}
+            placeholder="Username"
+            placeholderTextColor="#9a73ef"
+            returnKeyType='go'
+            autoCorrect={false}
+          />
+          <Text>Password:</Text>
+          <TextInput style={styles.input}
+            placeholder="Password"
+            placeholderTextColor="#9a73ef"
+            returnKeyType='go'
+            secureTextEntry={true}
+            autoCorrect={false}
+          /> */}
           <BUTTON_DEFAULT
-            title="Continue To App"
+            title="Login To App"
             onClick={this.navigateToHome}
           />
         </View>
