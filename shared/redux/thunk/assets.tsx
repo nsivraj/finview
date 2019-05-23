@@ -12,7 +12,6 @@ export const market_assets_thunk = () => {
     if(_ASSETS_CACHE) {
       dispatch(receive_assets(_ASSETS_CACHE));
     } else {
-      console.log("Going to server to get assets");
       return fetch(`https://api.kraken.com/0/public/Assets`)
         .then(data => data.json())
         .then(data => {
@@ -34,7 +33,6 @@ export const market_assetpairs_thunk = () => {
     if(_ASSETPAIRS_CACHE) {
       dispatch(receive_assetpairs(_ASSETPAIRS_CACHE));
     } else {
-      console.log("Going to server to get assetpairs");
       return fetch(`https://api.kraken.com/0/public/AssetPairs`)
         .then(data => data.json())
         .then(data => {

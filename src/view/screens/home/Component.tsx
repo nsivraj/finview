@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { View, FlatList, Text } from 'react-native';
-
+import { ListItem } from 'react-native-elements';
 import styles from './styles';
 
 const extractKey = ({id}:any) => id
@@ -22,16 +22,27 @@ class Home extends React.PureComponent<Props, State> {
     this.props.fetchMarketPrices();
   }
 
+  recentTradesScreen = (symbol:any):any => {
+    console.log("recent trades for symbol: " + symbol);
+  }
+
+  renderRightElement = (lastTrade:any) => {
+    return (
+      <Text style={{fontSize: 12}}>{lastTrade}</Text>
+    );
+  }
+
   renderItem = ({item}:any) => {
     return (
-      <View style={styles.row}>
-        <View style={{flex: 1}}>
-          <Text>{item.symbol}</Text>
-        </View>
-        <View style={{flex: 1}}>
-          <Text style={{textAlign: 'right'}}>{item.lastTrade}</Text>
-        </View>
-      </View>
+      <ListItem
+        onPress={() => {this.recentTradesScreen(item.symbol)}}
+        key={item.id}
+        title={item.symbol}
+        titleStyle={{fontSize: 12}}
+        topDivider={true}
+        chevron
+        rightElement={this.renderRightElement(item.lastTrade)}
+      />
     )
   }
 

@@ -1,3 +1,66 @@
-PODFILE CHECKSUM: 8925e3f33d719be35d2485580060cd02d85d55eb
+PODS:
+  - React (0.59.8):
+    - React/Core (= 0.59.8)
+  - React/Core (0.59.8):
+    - yoga (= 0.59.8.React)
+  - React/fishhook (0.59.8)
+  - React/RCTActionSheet (0.59.8):
+    - React/Core
+  - React/RCTAnimation (0.59.8):
+    - React/Core
+  - React/RCTBlob (0.59.8):
+    - React/Core
+  - React/RCTGeolocation (0.59.8):
+    - React/Core
+  - React/RCTImage (0.59.8):
+    - React/Core
+    - React/RCTNetwork
+  - React/RCTLinkingIOS (0.59.8):
+    - React/Core
+  - React/RCTNetwork (0.59.8):
+    - React/Core
+  - React/RCTSettings (0.59.8):
+    - React/Core
+  - React/RCTText (0.59.8):
+    - React/Core
+  - React/RCTVibration (0.59.8):
+    - React/Core
+  - React/RCTWebSocket (0.59.8):
+    - React/Core
+    - React/fishhook
+    - React/RCTBlob
+  - RNVectorIcons (6.4.2):
+    - React
+  - yoga (0.59.8.React)
+
+DEPENDENCIES:
+  - React/Core (from `../node_modules/react-native`)
+  - React/RCTActionSheet (from `../node_modules/react-native`)
+  - React/RCTAnimation (from `../node_modules/react-native`)
+  - React/RCTGeolocation (from `../node_modules/react-native`)
+  - React/RCTImage (from `../node_modules/react-native`)
+  - React/RCTLinkingIOS (from `../node_modules/react-native`)
+  - React/RCTNetwork (from `../node_modules/react-native`)
+  - React/RCTSettings (from `../node_modules/react-native`)
+  - React/RCTText (from `../node_modules/react-native`)
+  - React/RCTVibration (from `../node_modules/react-native`)
+  - React/RCTWebSocket (from `../node_modules/react-native`)
+  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
+  - yoga (from `../node_modules/react-native/ReactCommon/yoga/yoga.podspec`)
+
+EXTERNAL SOURCES:
+  React:
+    :path: "../node_modules/react-native"
+  RNVectorIcons:
+    :path: "../node_modules/react-native-vector-icons"
+  yoga:
+    :path: "../node_modules/react-native/ReactCommon/yoga/yoga.podspec"
+
+SPEC CHECKSUMS:
+  React: 76e6aa2b87d05eb6cccb6926d72685c9a07df152
+  RNVectorIcons: 6607bd3a30291d0edb56f9bbe7ae411ee2b928b0
+  yoga: 92b2102c3d373d1a790db4ab761d2b0ffc634f64
+
+PODFILE CHECKSUM: 1bc75cab8233b968e640ce3eab9580dc22bcfa9b
 
 COCOAPODS: 1.7.0

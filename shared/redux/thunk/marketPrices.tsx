@@ -8,8 +8,6 @@ export const market_prices_thunk = () => {
   return function(dispatch:any, getState:any) {
     const { app } = getState();
     const pairs = Object.keys(app.marketAssetPairs.result).toString();
-    console.log("https://api.kraken.com/0/public/Ticker?pair="+pairs);
-    //return fetch(`https://api.github.com/users/nsivraj`)
     return fetch(`https://api.kraken.com/0/public/Ticker?pair=${pairs}`)
     .then(data => data.json())
       .then(data => {
