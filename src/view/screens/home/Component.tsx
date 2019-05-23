@@ -11,18 +11,35 @@ export interface Props {
   name: string;
   fetchMarketPrices: any,
   prices: any,
+  tradeSymbol: string,
   setSelectedSymbol: any,
 }
 
 interface State {}
 
 class Home extends React.PureComponent<Props, State> {
+  navigationEventListener:any = {};
   constructor(props: Props) {
     super(props);
   }
 
   componentDidMount() {
+    this.navigationEventListener = Navigation.events().bindComponent(this);
     this.props.fetchMarketPrices();
+  }
+
+  componentWillUnmount() {
+    // Not mandatory
+    if (this.navigationEventListener) {
+      this.navigationEventListener.remove();
+    }
+  }
+
+  componentDidAppear() {
+    const { tradeSymbol } = this.props;
+    if(tradeSymbol && tradeSymbol.length > 0) {
+      this.props.setSelectedSymbol('');
+    }
   }
 
   recentTradesScreen = (symbol:any):any => {

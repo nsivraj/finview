@@ -7,6 +7,7 @@ import { set_trade_symbol } from '../../../../shared/redux/actions/fetchTrades';
 const mapStateToProps = (state:any) => {
   return {
     prices: state.app.marketPrices,
+    tradeSymbol: state.app.tradeSymbol,
   };
 };
 

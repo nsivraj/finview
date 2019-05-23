@@ -19,3 +19,6 @@ View market prices
 
 # To test
 - npm run test
+
+
+tradeData
